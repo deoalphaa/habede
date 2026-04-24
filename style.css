@@ -366,16 +366,3 @@ p {
         padding: 5px 12px;
     }
 }
-
-/* Untuk landscape mode HP */
-@media (max-height: 500px) and (orientation: landscape) {
-    h1 {
-        transform: translateY(-50%);
-        font-size: 1rem;
-    }
-    
-    p {
-        transform: translateY(-80%);
-        font-size: 0.65rem;
-    }
-}
