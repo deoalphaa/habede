@@ -1,3 +1,8 @@
+@import url(
+    'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600;700&family=Comic+Neue:wght@400;700&display=swap'
+    );
+
+
 * {
     margin: 0;
     padding: 0;
@@ -5,298 +10,339 @@
 }
 
 body {
-    font-family: 'Pixelify Sans', monospace;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-color: #FFC0CB;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    font-family: 'Quicksand', 'Comic Neue', sans-serif;
+    position: relative;
     padding: 20px;
 }
 
-.container {
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+h1 {
+    font-family: 'Fredoka One', 'Comic Neue', cursive;
+    font-size: 2.5rem;
     text-align: center;
-    background: rgba(255, 255, 255, 0.95);
+    color: white;
+    /* Posisi di tengah atas */
+    position: relative;
+    transform: translateY(-400%);
+}
+
+/* Style untuk p (paragraf) */
+p {
+    font-family: 'Comic Neue', 'Quicksand', cursive;
+    font-size: 1.1rem;
+    text-align: center;
+    color: #fff;
+    
+    /* Outline font warna pink tipis untuk p */
+    text-shadow: 
+        -0.5px -0.5px 0 #FFB6C1,
+        0.5px -0.5px 0 #FFB6C1,
+        -0.5px 0.5px 0 #FFB6C1,
+        0.5px 0.5px 0 #FFB6C1;
+    
+    background: rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    padding: 8px 20px;
     border-radius: 50px;
-    padding: 40px 50px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-.birthday-text {
+    backdrop-filter: blur(5px);
     margin-bottom: 30px;
+    
+    /* Posisi di tengah */
+    position: relative;
+    transform: translateY(-550%);
 }
 
-#mainTitle {
-    font-size: 48px;
-    color: #ff6b6b;
-    text-shadow: 3px 3px 0 #ffd93d;
-    margin-bottom: 10px;
+/* Animasi glow untuk H1 */
+@keyframes glowText {
+    0% {
+        text-shadow: 
+            -1px -1px 0 #FF69B4,
+            1px -1px 0 #FF69B4,
+            -1px 1px 0 #FF69B4,
+            1px 1px 0 #FF69B4,
+            0 0 5px rgba(255, 105, 180, 0.3);
+    }
+    100% {
+        text-shadow: 
+            -1px -1px 0 #FF1493,
+            1px -1px 0 #FF1493,
+            -1px 1px 0 #FF1493,
+            1px 1px 0 #FF1493,
+            0 0 15px rgba(255, 20, 147, 0.5);
+    }
 }
 
-#subTitle {
-    font-size: 20px;
-    color: #555;
-    animation: pulse 1.5s infinite;
+.candle {
+    cursor: pointer;
+    position: relative;
 }
 
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
+.flame {
+    width: 15px;
+    height: 35px;
+    background: orange;
+    border-radius: 50%;
+    animation: flicker 0.5s infinite;
+    transition: all 0.3s ease;
 }
 
-/* Cake Container */
-.cake-wrapper {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
+.flame {
+    transition: all 0.5s ease;
+}
+
+.candle.blown .flame {
+    animation: dieOut 0.5s ease-out forwards;
+}
+
+@keyframes dieOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        background: radial-gradient(circle, #ffeb3b, #ff9800, #f44336);
+    }
+    50% {
+        transform: scale(0.8);
+        opacity: 0.5;
+        background: radial-gradient(circle, #ff9800, #ff6600, #cc3300);
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+        background: #ccc;
+    }
 }
 
 .cake {
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.cake:hover {
-    transform: scale(1.02);
-}
-
-/* Cake Base */
-.cake-base {
-    position: relative;
-    width: 400px;
-    height: 120px;
-    background: #d4a574;
-    border-radius: 15px;
-    box-shadow: 0 10px 0 #b87333;
-    overflow: hidden;
-}
-
-/* Cake Layer 1 (bottom) */
-.cake-layer-1 {
     position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 80px;
-    background: #e8b88a;
-    border-radius: 15px 15px 15px 15px;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+    width: 250px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    margin-top: -70px;
+    margin-left: -125px;
 }
 
-/* Cake Layer 2 (middle) */
-.cake-layer-2 {
+.plate {
+    width: 270px;
+    height: 110px;
     position: absolute;
-    bottom: 70px;
-    left: 15px;
-    width: calc(100% - 30px);
-    height: 60px;
-    background: #f0c4a0;
-    border-radius: 12px;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
-}
-
-/* Cake Layer 3 (top) */
-.cake-layer-3 {
-    position: absolute;
-    bottom: 120px;
-    left: 30px;
-    width: calc(100% - 60px);
-    height: 50px;
-    background: #f8d5b0;
-    border-radius: 10px;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
-}
-
-/* Cake Frosting */
-.frosting {
-    position: absolute;
-    bottom: 165px;
-    left: 20px;
-    width: calc(100% - 40px);
-    height: 25px;
-    background: #fff5e6;
-    border-radius: 20px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.frosting-dot {
-    width: 12px;
-    height: 12px;
-    background: #ff9999;
+    bottom: -10px;
+    left: -10px;
+    background-color: #ccc;
     border-radius: 50%;
-    display: inline-block;
+    box-shadow:
+        0 2px 0 #a6a6a6,
+        0 4px 0 #a6a6a6,
+        0 5px 40px rgba(0,0,0,0.5);
 }
 
-/* Sprinkles */
-.sprinkle {
+.cake > * {
     position: absolute;
-    width: 4px;
-    height: 10px;
-    border-radius: 2px;
-    transform: rotate(45deg);
 }
 
-.sprinkle:nth-child(1) { top: 30px; left: 50px; background: #ff6b6b; }
-.sprinkle:nth-child(2) { top: 45px; left: 120px; background: #4ecdc4; transform: rotate(-30deg); }
-.sprinkle:nth-child(3) { top: 25px; left: 200px; background: #ffe66d; transform: rotate(60deg); }
-.sprinkle:nth-child(4) { top: 50px; left: 280px; background: #ff6b6b; transform: rotate(-45deg); }
-.sprinkle:nth-child(5) { top: 35px; left: 340px; background: #a8e6cf; transform: rotate(20deg); }
-.sprinkle:nth-child(6) { top: 55px; left: 80px; background: #ff8c94; transform: rotate(-60deg); }
-.sprinkle:nth-child(7) { top: 20px; left: 350px; background: #ffd3b6; transform: rotate(40deg); }
-.sprinkle:nth-child(8) { top: 60px; left: 250px; background: #aa96da; transform: rotate(-20deg); }
+.layer {
+    position: absolute;
+    display: block;
+    width: 250px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #553c13;
+    box-shadow:
+        0 2px 0px #5f4518,
+        0 4px 0px #4a3310,
+        0 6px 0px #48310f,
+        0 8px 0px #462f0e,
+        0 10px 0px #442d0d,
+        0 12px 0px #422b0c,
+        0 14px 0px #40290b,
+        0 16px 0px #3e270a,
+        0 18px 0px #3c2509,
+        0 20px 0px #3a2308,
+        0 22px 0px #382107,
+        0 24px 0px #361f06,
+        0 26px 0px #341d05,
+        0 28px 0px #321b04,
+        0 30px 0px #301903;
+}
 
-/* Candles */
+.layer-top { top: 0px; }
+.layer-middle { top: 33px; }
+.layer-bottom { top: 66px; }
+
+.icing {
+    top: 2px;
+    left: 5px;
+    background-color: #f0e4d0;
+    width: 240px;
+    height: 90px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.icing::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    bottom: 6px;
+    left: 5px;
+    background-color: #f5ead8;
+    box-shadow:
+        0 0 4px #fefaf5,
+        0 0 4px #fefaf5,
+        0 0 4px #fefaf5;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.drip {
+    display: block;
+    width: 50px;
+    height: 60px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: #f0e4d0;
+    position: absolute;
+}
+
+.drip1 {
+    top: 53px;
+    left: 5px;
+    transform: skewY(15deg);
+    height: 48px;
+    width: 40px;
+}
+
+.drip2 {
+    top: 69px;
+    left: 181px;
+    transform: skewY(-15deg);
+}
+
+.drip3 {
+    top: 54px;
+    left: 90px;
+    width: 80px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
 .candle {
-    position: absolute;
-    width: 12px;
+    background-color:#FBC4D4;
+    width: 16px;
     height: 50px;
-    bottom: 190px;
-    border-radius: 6px 6px 3px 3px;
-    transition: all 0.3s;
-}
-
-/* Candle Colors */
-.green-candle {
-    background: linear-gradient(135deg, #ff69b4, #ff1493);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.purple-candle {
-    background: linear-gradient(135deg, #9370db, #8a2be2);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.blue-candle {
-    background: linear-gradient(135deg, #87ceeb, #4682b4);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.yellow-candle {
-    background: linear-gradient(135deg, #ffd700, #ffa500);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-/* Flame */
-.candle::before {
-    content: '';
+    border-radius: 8px / 4px;
+    top: -20px;
+    left: 50%;
+    margin-left: -8px;
+    z-index: 10;
     position: absolute;
-    width: 14px;
-    height: 20px;
-    background: radial-gradient(circle, #ff6600, #ffcc00);
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    top: -18px;
-    left: -1px;
-    animation: flicker 0.3s infinite alternate;
-    box-shadow: 0 0 10px rgba(255, 100, 0, 0.5);
+    outline: 2px solid #c2768a9d;
+}
+
+.candle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 8px;
+    border-radius: 50%;
+    background-color:#FDA4BA;
+}
+
+.flame {
+    position: absolute;
+    background-color: orange;
+    width: 15px;
+    height: 35px;
+    border-radius: 10px 10px 10px 10px / 25px 25px 10px 10px;
+    top: -34px;
+    left: 50%;
+    margin-left: -7.5px;
+    z-index: 10;
+    box-shadow:
+        0 0 10px rgba(255,165,0,0.5),
+        0 0 20px rgba(255,165,0,0.5),
+        0 0 60px rgba(255,165,0,0.5),
+        0 0 80px rgba(255,165,0,0.5);
+    transform-origin: 50% 90%;
+    animation: flicker 1s ease-in-out alternate infinite;
+    outline: 2px solid rgba(207, 134, 0, 0.658);
 }
 
 @keyframes flicker {
-    0% { transform: scale(1) translateY(0); opacity: 1; }
-    100% { transform: scale(1.1) translateY(-2px); opacity: 0.9; }
-}
-
-/* Blown Candles - Flame goes out */
-.candle.blown::before {
-    content: '💨';
-    background: none;
-    animation: none;
-    font-size: 14px;
-    text-align: center;
-    line-height: 20px;
-    top: -20px;
-    left: -2px;
-    color: #999;
-    box-shadow: none;
-}
-
-.candle.blown {
-    opacity: 0.7;
-    filter: grayscale(0.3);
-}
-
-/* Smoke effect */
-.candle.blown::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: radial-gradient(circle, rgba(200,200,200,0.6), transparent);
-    border-radius: 50%;
-    top: -25px;
-    left: -5px;
-    animation: smoke 1s ease-out forwards;
-}
-
-@keyframes smoke {
-    0% { transform: scale(0.5) translateY(0); opacity: 0.6; }
-    100% { transform: scale(2) translateY(-30px); opacity: 0; }
-}
-
-/* Controls */
-.controls {
-    margin-top: 40px;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    background: #f0f0f0;
-    padding: 15px 25px;
-    border-radius: 40px;
-}
-
-.controls label {
-    font-weight: bold;
-    color: #555;
-}
-
-.controls input {
-    padding: 8px 15px;
-    border: 2px solid #ddd;
-    border-radius: 25px;
-    font-size: 14px;
-    font-family: 'Pixelify Sans', monospace;
-    outline: none;
-}
-
-.controls input:focus {
-    border-color: #ff6b6b;
-}
-
-#updateBtn {
-    background: linear-gradient(135deg, #ff6b6b, #ff8c94);
-    color: white;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 25px;
-    font-size: 16px;
-    font-family: 'Pixelify Sans', monospace;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-#updateBtn:hover {
-    transform: scale(1.05);
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-    .container {
-        padding: 20px;
+    0% {
+        transform: skewX(5deg);
+        box-shadow: 
+            0 0 10px rgba(255,165,0,0.2),
+            0 0 20px rgba(255,165,0,0.2),
+            0 0 60px rgba(255,165,0,0.2),
+            0 0 80px rgba(255,165,0,0.2);
     }
-    
-    #mainTitle {
-        font-size: 32px;
+    25% {
+        transform: skewX(-5deg);
+        box-shadow:
+            0 0 10px rgba(255,165,0,0.5),
+            0 0 20px rgba(255,165,0,0.5),
+            0 0 60px rgba(255,165,0,0.5),
+            0 0 80px rgba(255,165,0,0.5);
     }
-    
-    .cake-base {
-        width: 300px;
+    50% {
+        transform: skewX(10deg);
+        box-shadow:
+            0 0 10px rgba(255,165,0,0.3),
+            0 0 20px rgba(255,165,0,0.3),
+            0 0 60px rgba(255,165,0,0.3),
+            0 0 80px rgba(255,165,0,0.3);
     }
-    
-    .controls {
-        flex-direction: column;
+    75% {
+        transform: skewX(-10deg);
+        box-shadow:
+            0 0 10px rgba(255,165,0,0.4),
+            0 0 20px rgba(255,165,0,0.4),
+            0 0 60px rgba(255,165,0,0.4),
+            0 0 80px rgba(255,165,0,0.4);
+    }
+    100% {
+        transform: skewX(5deg);
+        box-shadow:
+            0 0 10px rgba(255,165,0,0.5),
+            0 0 20px rgba(255,165,0,0.5),
+            0 0 60px rgba(255,165,0,0.5),
+            0 0 80px rgba(255,165,0,0.5);
     }
 }
