@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Birthday Cake - Blow Candles 🎂</title>
     <style>
         * {
@@ -12,15 +12,15 @@
         }
 
         body {
-            height: 100vh;
+            min-height: 100vh;
             background: linear-gradient(135deg, #f8d7e3 0%, #fbc4d4 50%, #fda4ba 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             font-family: 'Arial', sans-serif;
-            overflow: hidden;
             position: relative;
+            padding: 20px;
         }
 
         /* Stars background */
@@ -50,19 +50,23 @@
         .cake-wrapper {
             position: relative;
             z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
         }
 
         .cake {
-            width: 350px;
-            height: 450px;
+            width: min(350px, 85vw);
+            height: auto;
             position: relative;
             margin: 0 auto;
         }
 
         /* Cake base */
         .plate {
-            width: 320px;
-            height: 30px;
+            width: min(320px, 80vw);
+            height: min(30px, 6vw);
             background: linear-gradient(145deg, #f8d7da, #e9c6cf);
             border-radius: 50%;
             position: absolute;
@@ -74,11 +78,11 @@
 
         /* Cake layers */
         .layer1 {
-            width: 300px;
-            height: 90px;
+            width: min(300px, 75vw);
+            height: min(90px, 18vw);
             background: linear-gradient(145deg, #ff9ff3 0%, #f368e0 50%, #ff6b9d 100%);
             position: absolute;
-            bottom: 35px;
+            bottom: min(35px, 7vw);
             left: 50%;
             transform: translateX(-50%);
             border-radius: 25px 25px 0 0;
@@ -88,11 +92,11 @@
         }
 
         .layer2 {
-            width: 260px;
-            height: 80px;
+            width: min(260px, 65vw);
+            height: min(80px, 16vw);
             background: linear-gradient(145deg, #ff9ff3 0%, #f368e0 100%);
             position: absolute;
-            bottom: 120px;
+            bottom: min(120px, 24vw);
             left: 50%;
             transform: translateX(-50%);
             border-radius: 22px 22px 0 0;
@@ -102,11 +106,11 @@
         }
 
         .layer3 {
-            width: 220px;
-            height: 70px;
+            width: min(220px, 55vw);
+            height: min(70px, 14vw);
             background: linear-gradient(145deg, #ff9ff3 0%, #f368e0 100%);
             position: absolute;
-            bottom: 195px;
+            bottom: min(195px, 39vw);
             left: 50%;
             transform: translateX(-50%);
             border-radius: 20px 20px 0 0;
@@ -119,7 +123,7 @@
         .cream {
             position: absolute;
             width: 98%;
-            height: 12px;
+            height: min(12px, 2.5vw);
             background: linear-gradient(90deg, #fff 0%, #f8f9fa 50%, #fff 100%);
             border-radius: 50px;
             box-shadow: 0 2px 8px rgba(255,255,255,0.6);
@@ -131,19 +135,21 @@
         /* Candles */
         .candles {
             position: absolute;
-            bottom: 250px;
-            left: 23.5%;
-            /* transform: translateX(-20%); */
-            transform: translateY(20%);
+            bottom: min(250px, 50vw);
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            gap: 28px;
+            gap: min(28px, 5vw);
             z-index: 20;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .candle {
             position: relative;
-            width: 10px;
-            height: 65px;
+            width: min(10px, 2.5vw);
+            height: min(65px, 13vw);
+            min-width: 8px;
             background: linear-gradient(180deg, #fff 0%, #f0f0f0 50%, #e0e0e0 100%);
             border-radius: 5px 5px 0 0;
             cursor: pointer;
@@ -163,8 +169,8 @@
             top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 8px;
-            height: 12px;
+            width: min(8px, 2vw);
+            height: min(12px, 3vw);
             background: radial-gradient(circle at 30% 30%, #ffeb3b 0%, #ff9800 50%, #f44336 100%);
             border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
             box-shadow: 
@@ -207,10 +213,10 @@
         /* Birthday text */
         .birthday-text {
             position: absolute;
-            top: -80px;
+            top: min(-80px, -12vw);
             left: 50%;
             transform: translateX(-50%);
-            font-size: 2.2rem;
+            font-size: clamp(1.2rem, 5vw, 2rem);
             font-weight: bold;
             color: #fff;
             text-shadow: 
@@ -221,6 +227,17 @@
             white-space: nowrap;
         }
 
+        /* Responsive birthday text */
+        @media (max-width: 480px) {
+            .birthday-text {
+                font-size: clamp(0.9rem, 4vw, 1.2rem);
+                white-space: normal;
+                text-align: center;
+                width: 100%;
+                top: -60px;
+            }
+        }
+
         @keyframes glowText {
             from { text-shadow: 0 0 10px #ff69b4, 2px 2px 4px rgba(0,0,0,0.5); }
             to { text-shadow: 0 0 20px #ffb6c1, 0 0 30px #ff69b4, 2px 2px 4px rgba(0,0,0,0.5); }
@@ -229,15 +246,24 @@
         /* Instructions */
         .instructions {
             position: absolute;
-            bottom: -100px;
+            bottom: min(-100px, -15vw);
             left: 50%;
             transform: translateX(-50%);
             color: #fff;
-            font-size: 1.2rem;
+            font-size: clamp(0.8rem, 3.5vw, 1.2rem);
             font-weight: 600;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             text-align: center;
             white-space: nowrap;
+        }
+
+        @media (max-width: 480px) {
+            .instructions {
+                white-space: normal;
+                bottom: -80px;
+                width: 100%;
+                padding: 0 10px;
+            }
         }
 
         /* Celebration */
@@ -275,7 +301,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 3rem;
+            font-size: clamp(1.2rem, 6vw, 2.5rem);
             color: #fff;
             font-weight: bold;
             text-shadow: 0 0 30px #ff69b4;
@@ -284,8 +310,18 @@
             display: none;
             white-space: nowrap;
             background: rgba(0,0,0,0.3);
-            padding: 20px 40px;
+            padding: 15px 30px;
             border-radius: 50px;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .wish-text {
+                white-space: normal;
+                width: 90%;
+                font-size: 1.2rem;
+                padding: 12px 20px;
+            }
         }
 
         @keyframes bounce {
@@ -324,7 +360,7 @@
     
     <div class="cake-wrapper">
         <div class="cake">
-            <div class="birthday-text">🎂 HAPPY BIRTHDAY DARLENE🎂</div>
+            <div class="birthday-text">🎂 HAPPY BIRTHDAY DARLENE 🎂</div>
             
             <div class="plate"></div>
             
@@ -349,7 +385,7 @@
         </div>
         
         <div class="instructions">
-            klik lilin buat niup
+            ✨ klik lilin buat niup ✨
         </div>
     </div>
 
