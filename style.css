@@ -1,7 +1,6 @@
 @import url(
     'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600;700&family=Comic+Neue:wght@400;700&display=swap'
-    );
-
+);
 
 * {
     margin: 0;
@@ -21,6 +20,7 @@ body {
     padding: 20px;
 }
 
+/* Stars background */
 .stars {
     position: fixed;
     top: 0;
@@ -49,40 +49,38 @@ body {
     }
 }
 
+/* H1 Responsive */
 h1 {
     font-family: 'Fredoka One', 'Comic Neue', cursive;
-    font-size: 2.5rem;
+    font-size: clamp(1.2rem, 5vw, 2.5rem);
     text-align: center;
     color: white;
-    /* Posisi di tengah atas */
     position: relative;
-    transform: translateY(-400%);
+    margin-bottom: 10px;
+    margin-top: 20px;
+    padding: 0 10px;
+    z-index: 1;
 }
 
-/* Style untuk p (paragraf) */
+/* Style untuk p (paragraf) Responsive */
 p {
     font-family: 'Comic Neue', 'Quicksand', cursive;
-    font-size: 1.1rem;
+    font-size: clamp(0.7rem, 3vw, 1.1rem);
     text-align: center;
     color: #fff;
-    
-    /* Outline font warna pink tipis untuk p */
     text-shadow: 
         -0.5px -0.5px 0 #FFB6C1,
         0.5px -0.5px 0 #FFB6C1,
         -0.5px 0.5px 0 #FFB6C1,
         0.5px 0.5px 0 #FFB6C1;
-    
     background: rgba(255, 255, 255, 0.2);
     display: inline-block;
-    padding: 8px 20px;
+    padding: clamp(4px, 2vw, 8px) clamp(10px, 4vw, 20px);
     border-radius: 50px;
     backdrop-filter: blur(5px);
-    margin-bottom: 30px;
-    
-    /* Posisi di tengah */
+    margin-bottom: 20px;
     position: relative;
-    transform: translateY(-550%);
+    z-index: 1;
 }
 
 /* Animasi glow untuk H1 */
@@ -105,62 +103,34 @@ p {
     }
 }
 
-.candle {
-    cursor: pointer;
+/* Cake Container Responsive */
+.cake-container {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+    z-index: 1;
 }
 
-.flame {
-    width: 15px;
-    height: 35px;
-    background: orange;
-    border-radius: 50%;
-    animation: flicker 0.5s infinite;
-    transition: all 0.3s ease;
-}
-
-.flame {
-    transition: all 0.5s ease;
-}
-
-.candle.blown .flame {
-    animation: dieOut 0.5s ease-out forwards;
-}
-
-@keyframes dieOut {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-        background: radial-gradient(circle, #ffeb3b, #ff9800, #f44336);
-    }
-    50% {
-        transform: scale(0.8);
-        opacity: 0.5;
-        background: radial-gradient(circle, #ff9800, #ff6600, #cc3300);
-    }
-    100% {
-        transform: scale(0);
-        opacity: 0;
-        background: #ccc;
-    }
-}
-
+/* Cake - Responsive dengan scale */
 .cake {
-    position: absolute;
-    width: 250px;
-    height: 200px;
-    top: 50%;
-    left: 50%;
-    margin-top: -70px;
-    margin-left: -125px;
+    position: relative;
+    width: min(250px, 70vw);
+    height: min(200px, 56vw);
+    margin: 0 auto;
+    transform: scale(1);
 }
 
+/* Plate Responsive */
 .plate {
-    width: 270px;
-    height: 110px;
+    width: min(270px, 75vw);
+    height: min(110px, 30vw);
     position: absolute;
     bottom: -10px;
-    left: -10px;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: #ccc;
     border-radius: 50%;
     box-shadow:
@@ -173,13 +143,16 @@ p {
     position: absolute;
 }
 
+/* Layer Responsive */
 .layer {
     position: absolute;
     display: block;
-    width: 250px;
-    height: 100px;
+    width: min(250px, 70vw);
+    height: min(100px, 28vw);
     border-radius: 50%;
     background-color: #553c13;
+    left: 50%;
+    transform: translateX(-50%);
     box-shadow:
         0 2px 0px #5f4518,
         0 4px 0px #4a3310,
@@ -198,16 +171,27 @@ p {
         0 30px 0px #301903;
 }
 
-.layer-top { top: 0px; }
-.layer-middle { top: 33px; }
-.layer-bottom { top: 66px; }
+.layer-top { 
+    top: 0px; 
+    background-color: #FAA0C4;
+}
+.layer-middle { 
+    top: min(33px, 9vw); 
+    background-color: #E868A0;
+}
+.layer-bottom { 
+    top: min(66px, 18vw); 
+    background-color: #D6336C;
+}
 
+/* Icing Responsive */
 .icing {
     top: 2px;
-    left: 5px;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: #f0e4d0;
-    width: 240px;
-    height: 90px;
+    width: min(240px, 67vw);
+    height: min(90px, 25vw);
     border-radius: 50%;
     position: absolute;
 }
@@ -228,46 +212,50 @@ p {
     z-index: 1;
 }
 
+/* Drip Responsive */
 .drip {
     display: block;
-    width: 50px;
-    height: 60px;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+    width: min(50px, 14vw);
+    height: min(60px, 17vw);
+    border-bottom-left-radius: min(25px, 7vw);
+    border-bottom-right-radius: min(25px, 7vw);
     background-color: #f0e4d0;
     position: absolute;
 }
 
 .drip1 {
-    top: 53px;
-    left: 5px;
+    top: min(53px, 15vw);
+    left: min(5px, 2vw);
     transform: skewY(15deg);
-    height: 48px;
-    width: 40px;
+    height: min(48px, 13vw);
+    width: min(40px, 11vw);
 }
 
 .drip2 {
-    top: 69px;
-    left: 181px;
+    top: min(69px, 19vw);
+    left: auto;
+    right: min(5px, 2vw);
     transform: skewY(-15deg);
 }
 
 .drip3 {
-    top: 54px;
-    left: 90px;
-    width: 80px;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
+    top: min(54px, 15vw);
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(80px, 22vw);
+    border-bottom-left-radius: min(40px, 11vw);
+    border-bottom-right-radius: min(40px, 11vw);
 }
 
+/* Candle Responsive */
 .candle {
-    background-color:#FBC4D4;
-    width: 16px;
-    height: 50px;
-    border-radius: 8px / 4px;
+    background-color: #FBC4D4;
+    width: min(16px, 4.5vw);
+    height: min(50px, 14vw);
+    border-radius: min(8px, 2vw) / min(4px, 1vw);
     top: -20px;
     left: 50%;
-    margin-left: -8px;
+    transform: translateX(-50%);
     z-index: 10;
     position: absolute;
     outline: 2px solid #c2768a9d;
@@ -278,21 +266,22 @@ p {
     position: absolute;
     top: 0;
     left: 0;
-    width: 16px;
-    height: 8px;
+    width: 100%;
+    height: min(8px, 2vw);
     border-radius: 50%;
-    background-color:#FDA4BA;
+    background-color: #FDA4BA;
 }
 
+/* Flame Responsive */
 .flame {
     position: absolute;
     background-color: orange;
-    width: 15px;
-    height: 35px;
+    width: min(15px, 4vw);
+    height: min(35px, 10vw);
     border-radius: 10px 10px 10px 10px / 25px 25px 10px 10px;
-    top: -34px;
+    top: min(-34px, -9vw);
     left: 50%;
-    margin-left: -7.5px;
+    transform: translateX(-50%);
     z-index: 10;
     box-shadow:
         0 0 10px rgba(255,165,0,0.5),
@@ -304,9 +293,40 @@ p {
     outline: 2px solid rgba(207, 134, 0, 0.658);
 }
 
+.candle {
+    cursor: pointer;
+    position: absolute;
+}
+
+.flame {
+    transition: all 0.5s ease;
+}
+
+.candle.blown .flame {
+    animation: dieOut 0.5s ease-out forwards;
+}
+
+@keyframes dieOut {
+    0% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+        background: radial-gradient(circle, #ffeb3b, #ff9800, #f44336);
+    }
+    50% {
+        transform: translateX(-50%) scale(0.8);
+        opacity: 0.5;
+        background: radial-gradient(circle, #ff9800, #ff6600, #cc3300);
+    }
+    100% {
+        transform: translateX(-50%) scale(0);
+        opacity: 0;
+        background: #ccc;
+    }
+}
+
 @keyframes flicker {
     0% {
-        transform: skewX(5deg);
+        transform: translateX(-50%) skewX(5deg);
         box-shadow: 
             0 0 10px rgba(255,165,0,0.2),
             0 0 20px rgba(255,165,0,0.2),
@@ -314,7 +334,7 @@ p {
             0 0 80px rgba(255,165,0,0.2);
     }
     25% {
-        transform: skewX(-5deg);
+        transform: translateX(-50%) skewX(-5deg);
         box-shadow:
             0 0 10px rgba(255,165,0,0.5),
             0 0 20px rgba(255,165,0,0.5),
@@ -322,7 +342,7 @@ p {
             0 0 80px rgba(255,165,0,0.5);
     }
     50% {
-        transform: skewX(10deg);
+        transform: translateX(-50%) skewX(10deg);
         box-shadow:
             0 0 10px rgba(255,165,0,0.3),
             0 0 20px rgba(255,165,0,0.3),
@@ -330,7 +350,7 @@ p {
             0 0 80px rgba(255,165,0,0.3);
     }
     75% {
-        transform: skewX(-10deg);
+        transform: translateX(-50%) skewX(-10deg);
         box-shadow:
             0 0 10px rgba(255,165,0,0.4),
             0 0 20px rgba(255,165,0,0.4),
@@ -338,11 +358,88 @@ p {
             0 0 80px rgba(255,165,0,0.4);
     }
     100% {
-        transform: skewX(5deg);
+        transform: translateX(-50%) skewX(5deg);
         box-shadow:
             0 0 10px rgba(255,165,0,0.5),
             0 0 20px rgba(255,165,0,0.5),
             0 0 60px rgba(255,165,0,0.5),
             0 0 80px rgba(255,165,0,0.5);
+    }
+}
+
+/* Wish Text Responsive */
+.wish-text {
+    text-align: center;
+    font-size: clamp(1rem, 5vw, 1.8rem);
+    font-family: 'Fredoka One', cursive;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-top: min(30px, 8vw);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(135deg, #FF69B4, #FF1493);
+    padding: clamp(8px, 3vw, 15px) clamp(15px, 6vw, 30px);
+    border-radius: 50px;
+    display: inline-block;
+    width: auto;
+    max-width: 90%;
+}
+
+.wish-text.show {
+    opacity: 1;
+    transform: translateY(0);
+    animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Responsive untuk HP */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+        justify-content: flex-start;
+        padding-top: 40px;
+    }
+    
+    h1 {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    
+    p {
+        margin-bottom: 10px;
+    }
+    
+    .wish-text {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+/* Responsive untuk layar sangat kecil */
+@media (max-width: 400px) {
+    .cake {
+        transform: scale(0.9);
+    }
+    
+    h1 {
+        margin-top: 0;
+    }
+}
+
+/* Responsive untuk laptop/desktop */
+@media (min-width: 1024px) {
+    .cake {
+        transform: scale(1);
+    }
+    
+    .wish-text {
+        margin-top: 40px;
     }
 }
