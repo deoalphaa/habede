@@ -367,63 +367,6 @@ p {
     }
 }
 
-/* Untuk HP ukuran sedang (max-width: 600px) */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 1.2rem;
-        transform: translateY(-150%);
-        white-space: nowrap;
-        margin-top: 20px;
-    }
-    
-    p {
-        font-size: 0.7rem;
-        transform: translateY(-200%);
-        white-space: normal;
-        padding: 5px 10px;
-        width: 90%;
-        max-width: 280px;
-    }
-}
-
-/* Untuk HP kecil (max-width: 450px) */
-@media (max-width: 450px) {
-    h1 {
-        font-size: 0.9rem;
-        transform: translateY(-100%);
-        white-space: normal;
-        text-align: center;
-        width: 100%;
-        padding: 0 10px;
-        letter-spacing: 1px;
-    }
-    
-    p {
-        font-size: 0.6rem;
-        transform: translateY(-150%);
-        white-space: normal;
-        width: 95%;
-        padding: 4px 8px;
-        margin-bottom: 15px;
-    }
-}
-
-/* Untuk HP sangat kecil (max-width: 380px) */
-@media (max-width: 380px) {
-    h1 {
-        font-size: 0.75rem;
-        transform: translateY(-80%);
-        white-space: normal;
-        line-height: 1.3;
-    }
-    
-    p {
-        font-size: 0.55rem;
-        transform: translateY(-100%);
-        padding: 3px 6px;
-    }
-}
-
 /* Untuk landscape mode HP */
 @media (max-height: 500px) and (orientation: landscape) {
     h1 {
