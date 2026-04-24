@@ -1,0 +1,302 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pixelify Sans', monospace;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50px;
+    padding: 40px 50px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.birthday-text {
+    margin-bottom: 30px;
+}
+
+#mainTitle {
+    font-size: 48px;
+    color: #ff6b6b;
+    text-shadow: 3px 3px 0 #ffd93d;
+    margin-bottom: 10px;
+}
+
+#subTitle {
+    font-size: 20px;
+    color: #555;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* Cake Container */
+.cake-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.cake {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.cake:hover {
+    transform: scale(1.02);
+}
+
+/* Cake Base */
+.cake-base {
+    position: relative;
+    width: 400px;
+    height: 120px;
+    background: #d4a574;
+    border-radius: 15px;
+    box-shadow: 0 10px 0 #b87333;
+    overflow: hidden;
+}
+
+/* Cake Layer 1 (bottom) */
+.cake-layer-1 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background: #e8b88a;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Cake Layer 2 (middle) */
+.cake-layer-2 {
+    position: absolute;
+    bottom: 70px;
+    left: 15px;
+    width: calc(100% - 30px);
+    height: 60px;
+    background: #f0c4a0;
+    border-radius: 12px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Cake Layer 3 (top) */
+.cake-layer-3 {
+    position: absolute;
+    bottom: 120px;
+    left: 30px;
+    width: calc(100% - 60px);
+    height: 50px;
+    background: #f8d5b0;
+    border-radius: 10px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Cake Frosting */
+.frosting {
+    position: absolute;
+    bottom: 165px;
+    left: 20px;
+    width: calc(100% - 40px);
+    height: 25px;
+    background: #fff5e6;
+    border-radius: 20px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.frosting-dot {
+    width: 12px;
+    height: 12px;
+    background: #ff9999;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Sprinkles */
+.sprinkle {
+    position: absolute;
+    width: 4px;
+    height: 10px;
+    border-radius: 2px;
+    transform: rotate(45deg);
+}
+
+.sprinkle:nth-child(1) { top: 30px; left: 50px; background: #ff6b6b; }
+.sprinkle:nth-child(2) { top: 45px; left: 120px; background: #4ecdc4; transform: rotate(-30deg); }
+.sprinkle:nth-child(3) { top: 25px; left: 200px; background: #ffe66d; transform: rotate(60deg); }
+.sprinkle:nth-child(4) { top: 50px; left: 280px; background: #ff6b6b; transform: rotate(-45deg); }
+.sprinkle:nth-child(5) { top: 35px; left: 340px; background: #a8e6cf; transform: rotate(20deg); }
+.sprinkle:nth-child(6) { top: 55px; left: 80px; background: #ff8c94; transform: rotate(-60deg); }
+.sprinkle:nth-child(7) { top: 20px; left: 350px; background: #ffd3b6; transform: rotate(40deg); }
+.sprinkle:nth-child(8) { top: 60px; left: 250px; background: #aa96da; transform: rotate(-20deg); }
+
+/* Candles */
+.candle {
+    position: absolute;
+    width: 12px;
+    height: 50px;
+    bottom: 190px;
+    border-radius: 6px 6px 3px 3px;
+    transition: all 0.3s;
+}
+
+/* Candle Colors */
+.green-candle {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.purple-candle {
+    background: linear-gradient(135deg, #9370db, #8a2be2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.blue-candle {
+    background: linear-gradient(135deg, #87ceeb, #4682b4);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.yellow-candle {
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Flame */
+.candle::before {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 20px;
+    background: radial-gradient(circle, #ff6600, #ffcc00);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    top: -18px;
+    left: -1px;
+    animation: flicker 0.3s infinite alternate;
+    box-shadow: 0 0 10px rgba(255, 100, 0, 0.5);
+}
+
+@keyframes flicker {
+    0% { transform: scale(1) translateY(0); opacity: 1; }
+    100% { transform: scale(1.1) translateY(-2px); opacity: 0.9; }
+}
+
+/* Blown Candles - Flame goes out */
+.candle.blown::before {
+    content: '💨';
+    background: none;
+    animation: none;
+    font-size: 14px;
+    text-align: center;
+    line-height: 20px;
+    top: -20px;
+    left: -2px;
+    color: #999;
+    box-shadow: none;
+}
+
+.candle.blown {
+    opacity: 0.7;
+    filter: grayscale(0.3);
+}
+
+/* Smoke effect */
+.candle.blown::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(200,200,200,0.6), transparent);
+    border-radius: 50%;
+    top: -25px;
+    left: -5px;
+    animation: smoke 1s ease-out forwards;
+}
+
+@keyframes smoke {
+    0% { transform: scale(0.5) translateY(0); opacity: 0.6; }
+    100% { transform: scale(2) translateY(-30px); opacity: 0; }
+}
+
+/* Controls */
+.controls {
+    margin-top: 40px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #f0f0f0;
+    padding: 15px 25px;
+    border-radius: 40px;
+}
+
+.controls label {
+    font-weight: bold;
+    color: #555;
+}
+
+.controls input {
+    padding: 8px 15px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    font-size: 14px;
+    font-family: 'Pixelify Sans', monospace;
+    outline: none;
+}
+
+.controls input:focus {
+    border-color: #ff6b6b;
+}
+
+#updateBtn {
+    background: linear-gradient(135deg, #ff6b6b, #ff8c94);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-family: 'Pixelify Sans', monospace;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#updateBtn:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    
+    #mainTitle {
+        font-size: 32px;
+    }
+    
+    .cake-base {
+        width: 300px;
+    }
+    
+    .controls {
+        flex-direction: column;
+    }
+}
