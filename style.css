@@ -65,19 +65,10 @@ p {
     font-size: 1.1rem;
     text-align: center;
     color: #fff;
-    
-    /* Outline font warna pink tipis untuk p */
-    text-shadow: 
-        -0.5px -0.5px 0 #FFB6C1,
-        0.5px -0.5px 0 #FFB6C1,
-        -0.5px 0.5px 0 #FFB6C1,
-        0.5px 0.5px 0 #FFB6C1;
-    
     background: rgba(255, 255, 255, 0.2);
     display: inline-block;
     border-radius: 50px;
     backdrop-filter: blur(5px);
-    margin-bottom: 30px;
     
     /* Posisi di tengah */
     position: relative;
