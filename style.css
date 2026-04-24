@@ -347,9 +347,4 @@ p {
         font-size: 1.5rem;
         transform: translateY(-280%);
     }
-    
-    p {
-        font-size: 0.8rem;
-        margin-top: 0;
-    }
 }
